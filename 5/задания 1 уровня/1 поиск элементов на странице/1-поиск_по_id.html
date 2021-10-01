@@ -8,23 +8,30 @@
 </head>
 
 <body>
-    <p class="one">параграф 1</p>
-    <p>параграф</p>
-    <p class="one">параграф 2</p>
-    <h3 class="one">заголовок 1</h3>
-    <h3>заголовок 2</h3>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
 
-    <!-- Задание. Используя поиск по имени класса, получите все элементы с классом .one
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+            <p class="card-text">
+                Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="#" class="card-link">Card link</a>
+            <a href="#" class="card-link">Another link</a>
+        </div>
+    </div>
+
+    <!-- Задание. Используя поиск по селектору (метод querySelectorAll) найдите только те ссылки с
+    классом .card-link, которые находятся в .card-body
     и выведите их в консоль. -->
 
     <script>
         'use strict';
-        let two = document.getElementsByClassName('one');
-        console.log(one);
+        let card_link = document.querySelectorAll('div[class="card-body"] a[class="card-link"]');
+        console.log(card_link);
     </script>
-</body>
-
-</html>cript>
 </body>
 
 </html>
