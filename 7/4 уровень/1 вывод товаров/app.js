@@ -9,10 +9,9 @@
     <a href="https://example.com/producs/${здесь_id_товара}">Подробнее</a>
 </div>
 */
-
+const url = 'https://example.com/producs/'
 const products = {
-    phones: [
-        {
+    phones: [{
             id: 1,
             name: "Смартфон 1",
             price: "23,99 р.",
@@ -32,8 +31,7 @@ const products = {
         },
     ],
 
-    tablets: [
-        {
+    tablets: [{
             id: 4,
             name: "Планшет 4",
             price: "99,99 р.",
@@ -47,8 +45,7 @@ const products = {
         },
     ],
 
-    tv: [
-        {
+    tv: [{
             id: 6,
             name: "Телевизор 6",
             price: "199,99 р.",
@@ -75,28 +72,33 @@ const products = {
     ],
 };
 
+const products_el = document.querySelector(".products");
+const buttons = document.querySelectorAll("button");
+buttons.forEach(function(button) {
+    button.addEventListener("click", clickHandler);
+});
 
 /**
  * Эта функция должна вызываться при клике по кнопкам.
  * @param {MouseEvent} event
  */
 function clickHandler(event) {
-    //вам нужно очищать содержимое .products
-    
-    //в showCategory надо передать строку с типом категории, тип берите
-    //из атрибута data-type у кнопки, по которой кликнули.
-    
+    products_el.innerHTML = "";
+    showCategory(event.target.dataset.type);
 }
 
 /**
- * Функция берет товары (объекты) из соответствующего массива phones,
- * tablets или tv. Генерирует разметку, используя getProductMarkup
- * и вставляет в .products
- * @param {string} category сюда должно прилетать значение атрибута data-type у кнопки,
+ * Сюда должно прилетать значение атрибута data-type у кнопки,
  * по которой кликнули.
+ * @param {string} category 
  */
 function showCategory(category) {
-    
+    const products_category = products[category];
+    let products_div = "";
+    products_category.forEach(function(product) {
+        products_div += getProductMarkup(product);
+    });
+    products_el.insertAdjacentHTML("afterbegin", products_div);
 }
 
 /**
@@ -105,9 +107,13 @@ function showCategory(category) {
  * @param {string} product.name название продукта
  * @param {string} product.price цена продукта
  * @param {string} product.imageUrl путь до картинки товара
- * @returns {string} html-разметка для товара по аналогии из комментария
- * в верху этого файла.
+ * @returns {string} html-разметка для товара
  */
 function getProductMarkup(product) {
-
+    return `<div class="product">
+                <div>${product.name}</div>
+                <img src="${product.imageUrl}" alt="">
+                <div>${product.price}</div>
+                <a href="${url}${product.id}">Подробнее</a>
+            </div>`;
 }

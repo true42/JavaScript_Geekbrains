@@ -20,6 +20,9 @@
         let url = "https://picsum.photos/200/300";
         let targetAttr = "_blank";
         let linkText = "ссылка";
+        let str = `<a href=${url} target=${targetAttr}>${linkText}</a>`;
+
+        document.body.insertAdjacentHTML('afterbegin', str)
     </script>
 </body>
 

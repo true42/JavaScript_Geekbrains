@@ -11,9 +11,8 @@
 <body>
     <button>Показать сообщение</button>
     <div class="message">
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, aliquam enim voluptates quibusdam
-        perferendis sint ipsa, nulla quas doloribus nobis libero voluptatem unde inventore. Ut quas corporis fugit error
-        explicabo? Ipsa quos qui similique sequi officia quod ab reiciendis alias!
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt, aliquam enim voluptates quibusdam perferendis sint ipsa, nulla quas doloribus nobis libero voluptatem unde inventore. Ut quas corporis fugit error explicabo? Ipsa quos qui similique sequi
+        officia quod ab reiciendis alias!
     </div>
 
     <!-- 
@@ -26,7 +25,15 @@
     -->
 
     <script>
-        
+        'use strict';
+        let notific = new Audio('notification.mp3');
+        let message = document.querySelector('.message');
+        let button = document.querySelector('button');
+        button.addEventListener('click', function() {
+            let messageHeight = message.clientHeight;
+            message.style.transform = `translateY(-${25 + messageHeight}px)`;
+            notific.play();
+        });
     </script>
 </body>
 
